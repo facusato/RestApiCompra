@@ -1,0 +1,68 @@
+package com.unla.RestApiCompra.services.implementacion;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
+
+import com.unla.RestApiCompra.entities.Cliente;
+import com.unla.RestApiCompra.entities.MedioDePago;
+import com.unla.RestApiCompra.repositories.IClienteRepository;
+import com.unla.RestApiCompra.services.IClienteService;
+
+@Service("clienteService")
+public class ClienteService implements IClienteService{
+	
+	
+	@Autowired
+	@Qualifier("clienteRepository")
+	private IClienteRepository clienteRepository;
+	
+	@Override
+	public List<Cliente> getAll() {
+		return clienteRepository.findAll();
+		
+	}
+
+
+
+	@Override
+	public Cliente crearCliente(Cliente cliente) {
+		Cliente clienteDB = clienteRepository.findByIdCliente(cliente.getIdCliente());
+		if( clienteDB != null) {
+			return clienteDB;
+		}
+
+		return clienteRepository.save(cliente);
+	}
+
+	@Override
+	public Cliente modificarCliente(Cliente cliente) {
+		return clienteRepository.save(cliente);
+	}
+
+	@Override
+	public boolean eliminarCliente(long idCliente) {
+		try {
+			clienteRepository.deleteById(idCliente);
+			return true;
+		}catch(Exception e) {
+			return false;
+		}
+	}
+
+	@Override
+	public Cliente obtenerCliente(long idCliente) {
+		return clienteRepository.findByIdCliente(idCliente);
+	}
+	
+	
+	public MedioDePago agregarMedioDePago(MedioDePago medio) {
+		return clienteRepository.save(medio);
+	}
+
+	
+
+
+}
