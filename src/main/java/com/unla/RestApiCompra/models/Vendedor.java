@@ -11,6 +11,6 @@ public class Vendedor {
 	private String nombre;
 	private String apellido;
 	private long dni;
-	private double villetera;
+	private double Billetera;
 
 }
