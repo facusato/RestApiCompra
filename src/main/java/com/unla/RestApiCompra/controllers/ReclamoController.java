@@ -56,7 +56,7 @@ public class ReclamoController {
 	
 	
 	@GetMapping("/estado/{estado}")
-	public ResponseEntity<List<Reclamo>> obtenerDenunciaPorId(@PathVariable("estado") String estado){
+	public ResponseEntity<List<Reclamo>> obtenerReclamosPorEstado(@PathVariable("estado") String estado){
 		List<Reclamo> reclamos = reclamoService.obtenerReclamosPorEstado(estado);
 		if(reclamos.isEmpty()) {
 			ResponseEntity.noContent().build();
