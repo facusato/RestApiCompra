@@ -8,6 +8,8 @@ public interface IReclamoService {
 	
 	public List<Reclamo> getAll();
 	
+	public List<Reclamo> obtenerReclamosPorEstado(String estado);
+	
 	public Reclamo crearReclamo(Reclamo reclamo);
 	
 	public Reclamo modificarReclamo(Reclamo reclamo);

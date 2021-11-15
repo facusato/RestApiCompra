@@ -55,4 +55,11 @@ public class ReclamoService implements IReclamoService{
 	public Reclamo obtenerReclamo(long idReclamo) {
 		return reclamoRepository.findByIdReclamo(idReclamo);
 	}
+
+
+
+	@Override
+	public List<Reclamo> obtenerReclamosPorEstado(String estado) {
+		return reclamoRepository.findByEstado(estado);
+	}
 }
