@@ -1,6 +1,5 @@
 package com.unla.RestApiCompra.services.implementacion;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,16 +30,12 @@ public class CarritoService implements ICarritoService{
 	@Override
 	public List<Carrito> getAll() {
 		int i=0;
-		Carrito carrito=new Carrito();
-		List<Carrito> ca= new ArrayList<Carrito>();
 		List<Carrito> c=carritoRepository.findAll();
 		while(i<c.size()) {
-			
-		carrito.setProducto(productoClient.obtenerProductoPorId(c.get(i).getIdProducto()).getBody());
-		ca.add(carrito);
+			c.get(i).setProducto(productoClient.obtenerProductoPorId(c.get(i).getIdProducto()).getBody());
 		i++;
 		}
-		return ca;
+		return c;
 	}
 
 	@Override
@@ -75,7 +70,4 @@ public class CarritoService implements ICarritoService{
 		return false;
 		}
 	}
-	
-	
-
 }
