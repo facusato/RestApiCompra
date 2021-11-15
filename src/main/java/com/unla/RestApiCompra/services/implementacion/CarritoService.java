@@ -35,11 +35,11 @@ public class CarritoService implements ICarritoService{
 		List<Carrito> ca= new ArrayList<Carrito>();
 		List<Carrito> c=carritoRepository.findAll();
 		while(i<c.size()) {
+			
 		carrito.setProducto(productoClient.obtenerProductoPorId(c.get(i).getIdProducto()).getBody());
 		ca.add(carrito);
 		i++;
 		}
-		
 		return ca;
 	}
 
