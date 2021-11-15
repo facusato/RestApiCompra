@@ -23,7 +23,7 @@ public class Reclamo {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idReclamo;
+	private long idReclamo;
 	
 	private String descripcion;
 	

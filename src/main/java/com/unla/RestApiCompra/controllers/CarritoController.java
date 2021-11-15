@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.unla.RestApiCompra.entities.Carrito;
+import com.unla.RestApiCompra.entities.Cliente;
 import com.unla.RestApiCompra.services.implementacion.CarritoService;
+import com.unla.RestApiCompra.services.implementacion.ClienteService;
 
 @RestController
 @RequestMapping("/carrito")
@@ -25,6 +27,10 @@ public class CarritoController {
 	@Autowired
 	@Qualifier("carritoService")
 	CarritoService carritoService;
+	
+	@Autowired
+	@Qualifier("clienteService")
+	ClienteService clienteService;
 
 	@GetMapping()
 	public ResponseEntity<List<Carrito>> obtenerCarritos(){
@@ -55,6 +61,12 @@ public class CarritoController {
 			Carrito carritoAct = carritoService.obtenerCarrito(idCarrito);
 			carritoAct.setCantidad(carrito.getCantidad());
 			carritoAct.setSubtotal(carrito.getSubtotal());
+			Cliente clienteAct = clienteService.obtenerCliente(carrito.getCliente().getIdCliente());
+			clienteAct.setApellido(carrito.getCliente().getApellido());
+			clienteAct.setNombre(carrito.getCliente().getNombre());
+			clienteAct.setUsuario(carrito.getCliente().getUsuario());
+			clienteAct.setPassword(carrito.getCliente().getPassword());
+			carritoAct.setCliente(clienteAct);
 			return ResponseEntity.ok(carritoService.modificarCarrito(carritoAct));
 		}
 	

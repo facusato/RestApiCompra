@@ -5,9 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-
 import com.unla.RestApiCompra.entities.Cliente;
-import com.unla.RestApiCompra.entities.MedioDePago;
 import com.unla.RestApiCompra.repositories.IClienteRepository;
 import com.unla.RestApiCompra.services.IClienteService;
 
@@ -57,12 +55,5 @@ public class ClienteService implements IClienteService{
 		return clienteRepository.findByIdCliente(idCliente);
 	}
 	
-	
-	public MedioDePago agregarMedioDePago(MedioDePago medio) {
-		return clienteRepository.save(medio);
-	}
-
-	
-
 
 }
