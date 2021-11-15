@@ -54,6 +54,16 @@ public class ReclamoController {
 		return ResponseEntity.ok(reclamo);
 	}
 	
+	
+	@GetMapping("/estado/{estado}")
+	public ResponseEntity<List<Reclamo>> obtenerDenunciaPorId(@PathVariable("estado") String estado){
+		List<Reclamo> reclamos = reclamoService.obtenerReclamosPorEstado(estado);
+		if(reclamos.isEmpty()) {
+			ResponseEntity.noContent().build();
+		}
+		return ResponseEntity.ok(reclamos);
+	}
+	
 	@PostMapping()
 	public ResponseEntity<Reclamo> insertarReclamo(@RequestBody Reclamo reclamo, BindingResult result){
 		return ResponseEntity.status(HttpStatus.CREATED).body(reclamoService.crearReclamo(reclamo));

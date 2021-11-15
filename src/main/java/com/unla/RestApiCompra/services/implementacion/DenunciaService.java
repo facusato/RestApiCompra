@@ -55,4 +55,11 @@ public class DenunciaService implements IDenunciaService{
 	public Denuncia obtenerDenuncia(long idDenuncia) {
 		return denunciaRepository.findByIdDenuncia(idDenuncia);
 	}
+
+
+
+	@Override
+	public List<Denuncia> obtenerDenunciasPorEstado(String estado) {
+		return denunciaRepository.findByEstado(estado);
+	}
 }

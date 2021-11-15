@@ -8,6 +8,8 @@ public interface IDenunciaService {
 	
 	public List<Denuncia> getAll();
 	
+	public List<Denuncia> obtenerDenunciasPorEstado(String estado);
+	
 	public Denuncia crearDenuncia(Denuncia denuncia);
 	
 	public Denuncia modificarDenuncia(Denuncia denuncia);

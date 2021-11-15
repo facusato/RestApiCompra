@@ -30,6 +30,8 @@ public class Denuncia {
 	
 	private String descripcion;
 	
+	private String estado;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="cliente_id", nullable=false)
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
