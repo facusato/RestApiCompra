@@ -57,9 +57,9 @@ public class ClienteController {
 		Cliente clienteAct = clienteService.obtenerCliente(idCliente);
 		clienteAct.setApellido(cliente.getApellido());
 		clienteAct.setNombre(cliente.getNombre());
+		clienteAct.setUsuario(cliente.getUsuario());
 		clienteAct.setPassword(cliente.getPassword());
-		//clienteService.modificarCliente(clienteAct);
-		
+	
 		return ResponseEntity.ok(clienteService.modificarCliente(clienteAct));
 	}
 	

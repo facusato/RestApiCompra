@@ -16,11 +16,13 @@ import javax.persistence.Transient;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.unla.RestApiCompra.models.Producto;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
 
 
 @Data 
+@NoArgsConstructor
 @Entity
 @Table(name="carrito")
 public class Carrito {
@@ -45,5 +47,7 @@ public class Carrito {
 	
 	@Transient
 	private Producto producto;
+	
+	
 	
 }

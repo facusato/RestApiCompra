@@ -1,5 +1,6 @@
 package com.unla.RestApiCompra.services.implementacion;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +10,6 @@ import org.springframework.stereotype.Service;
 import com.unla.RestApiCompra.client.ProductoClient;
 import com.unla.RestApiCompra.entities.Carrito;
 import com.unla.RestApiCompra.models.Producto;
-import com.unla.RestApiCompra.models.Vendedor;
 import com.unla.RestApiCompra.repositories.ICarritoRepository;
 import com.unla.RestApiCompra.repositories.IClienteRepository;
 import com.unla.RestApiCompra.services.ICarritoService;
@@ -30,20 +30,26 @@ public class CarritoService implements ICarritoService{
 
 	@Override
 	public List<Carrito> getAll() {
+		int i=0;
+		Carrito carrito=new Carrito();
+		List<Carrito> ca= new ArrayList<Carrito>();
+		List<Carrito> c=carritoRepository.findAll();
+		while(i<c.size()) {
+		carrito.setProducto(productoClient.obtenerProductoPorId(c.get(i).getIdProducto()).getBody());
+		ca.add(carrito);
+		i++;
+		}
 		
-		return carritoRepository.findAll();
+		return ca;
 	}
 
 	@Override
 	public Carrito crearCarrito(Carrito carrito) {
-		Producto producto=productoClient.obtenerProductoPorId(carritoRepository.findByIdCarrito(carrito.getIdCarrito()).getIdProducto()).getBody();
-		Carrito carritoDB = carritoRepository.findByIdCarrito(carrito.getIdCarrito());
-		carritoDB.setCliente(clienteRepository.findByIdCliente(carritoDB.getCliente().getIdCliente()));
-		Vendedor vendedor=producto.getVendedor();
-		producto.setVendedor(vendedor);
-		carritoDB.setProducto(producto);
-		return carritoRepository.save(carritoDB);
 		
+		Producto producto=productoClient.obtenerProductoPorId(carrito.getIdProducto()).getBody();
+		producto.setVendedor(producto.getVendedor());
+		carrito.setProducto(producto);
+		return carritoRepository.save(carrito);
 	}
 
 	@Override
@@ -53,10 +59,10 @@ public class CarritoService implements ICarritoService{
 
 	@Override
 	public Carrito obtenerCarrito(long idCarrito) {
-		//Producto producto=productoClient.obtenerProductoPorId(carritoRepository.findByIdCarrito(idCarrito).getIdProducto()).getBody();
-		//Carrito carrito=carritoRepository.findByIdCarrito(idCarrito);
-		//carrito.setCliente(carrito.getCliente());
-		//carrito.setProducto(producto);
+		Producto producto=productoClient.obtenerProductoPorId(carritoRepository.findByIdCarrito(idCarrito).getIdProducto()).getBody();
+		Carrito carrito=carritoRepository.findByIdCarrito(idCarrito);
+		carrito.setCliente(carrito.getCliente());
+		carrito.setProducto(producto);
 		return carritoRepository.findByIdCarrito(idCarrito);
 	}
 

@@ -1,6 +1,5 @@
 package com.unla.RestApiCompra.entities;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -12,26 +11,29 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 @Entity
-@Table(name="medios_de_pago")
-public class MedioDePago {
+@Table(name="denuncia")
+@Data @NoArgsConstructor @AllArgsConstructor @Builder
+public class Denuncia {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long idMedio;
+	private long idDenuncia;
 	
-	@Column(name="nombre_medio")
-	private String nombreMedio;
+	private String categoria;
+	//falsificación ilegal fraude inapropiado
 	
-	@Column(name="monto")
-	private double monto;
-	
+	private String descripcion;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="cliente_id", nullable=false)
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 	private Cliente cliente;
-	
 	
 	
 	

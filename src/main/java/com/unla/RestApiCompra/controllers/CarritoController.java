@@ -35,7 +35,7 @@ public class CarritoController {
 		return ResponseEntity.ok(lstCarrito);
 	}
 	
-	@GetMapping("/{idCarrito")
+	@GetMapping("/{idCarrito}")
 	public ResponseEntity<Carrito> obtenerCarritoPorId(@PathVariable("idCarrito") long idCarrito){
 		Carrito carrito = carritoService.obtenerCarrito(idCarrito);
 		if(carrito==null) {
@@ -46,15 +46,15 @@ public class CarritoController {
 
 	@PostMapping()
 	public ResponseEntity<Carrito> insertarCarrito(@RequestBody Carrito carrito , BindingResult result){
+		
 		return ResponseEntity.status(HttpStatus.CREATED).body(carritoService.crearCarrito(carrito));	
 	}
 	
-	@PutMapping("/{idCarrito")
+	@PutMapping("/{idCarrito}")
 		public ResponseEntity<Carrito> actualizarCarrito(@PathVariable("idCarrito") long idCarrito, @RequestBody Carrito carrito){
 			Carrito carritoAct = carritoService.obtenerCarrito(idCarrito);
 			carritoAct.setCantidad(carrito.getCantidad());
 			carritoAct.setSubtotal(carrito.getSubtotal());
-			
 			return ResponseEntity.ok(carritoService.modificarCarrito(carritoAct));
 		}
 	
