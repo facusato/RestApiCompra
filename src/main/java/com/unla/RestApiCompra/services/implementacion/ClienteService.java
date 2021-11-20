@@ -1,11 +1,15 @@
 package com.unla.RestApiCompra.services.implementacion;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+
+import com.unla.RestApiCompra.client.VendedorClient;
 import com.unla.RestApiCompra.entities.Cliente;
+import com.unla.RestApiCompra.models.Vendedor;
 import com.unla.RestApiCompra.repositories.IClienteRepository;
 import com.unla.RestApiCompra.services.IClienteService;
 
@@ -16,6 +20,9 @@ public class ClienteService implements IClienteService{
 	@Autowired
 	@Qualifier("clienteRepository")
 	private IClienteRepository clienteRepository;
+	
+	@Autowired
+	private VendedorClient vendedorClient;
 	
 	@Override
 	public List<Cliente> getAll() {
@@ -53,6 +60,12 @@ public class ClienteService implements IClienteService{
 	@Override
 	public Cliente obtenerCliente(long idCliente) {
 		return clienteRepository.findByIdCliente(idCliente);
+	}
+
+
+
+	public ArrayList<Vendedor> obtenerVendedorPorNombreDeProducto(String nombre) {
+		return vendedorClient.obtenerVendedorPorNombreDeProducto(nombre);
 	}
 	
 

@@ -66,8 +66,6 @@ public class MedioDePagoController {
 		Cliente clienteAct = clienteService.obtenerCliente(medioDePago.getCliente().getIdCliente());
 		clienteAct.setApellido(medioDePago.getCliente().getApellido());
 		clienteAct.setNombre(medioDePago.getCliente().getNombre());
-		clienteAct.setUsuario(medioDePago.getCliente().getUsuario());
-		clienteAct.setPassword(medioDePago.getCliente().getPassword());
 		medioDePagoAct.setCliente(clienteAct);
 		return ResponseEntity.ok(medioDePagoService.modificarMedioDePago(medioDePagoAct));
 	}

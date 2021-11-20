@@ -77,8 +77,6 @@ public class ReclamoController {
 		Cliente clienteAct = clienteService.obtenerCliente(reclamo.getCliente().getIdCliente());
 		clienteAct.setApellido(reclamo.getCliente().getApellido());
 		clienteAct.setNombre(reclamo.getCliente().getNombre());
-		clienteAct.setUsuario(reclamo.getCliente().getUsuario());
-		clienteAct.setPassword(reclamo.getCliente().getPassword());
 		reclamoAct.setCliente(clienteAct);
 		return ResponseEntity.ok(reclamoService.modificarReclamo(reclamoAct));
 	}

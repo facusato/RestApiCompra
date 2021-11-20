@@ -14,9 +14,11 @@ import com.unla.RestApiCompra.entities.MedioDePago;
 public interface IClienteRepository extends JpaRepository<Cliente, Serializable> {
 	
 	public abstract Cliente findByIdCliente(long idCliente);
+	public abstract Cliente findByDni(long dni);
 	public abstract Cliente findByApellido(String apellido);
 	public abstract List<Cliente> findClientesByApellido(String apellido);
-	public abstract Cliente findByEmail(String email);
 	public abstract MedioDePago save(MedioDePago medio);
+	
+	
 
 }

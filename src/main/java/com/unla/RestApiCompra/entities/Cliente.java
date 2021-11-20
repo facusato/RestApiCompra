@@ -18,12 +18,6 @@ public class Cliente {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idCliente;
 	
-	@Column(name="usuario")
-	private String usuario;
-	
-	@Column(name="password")
-	private String password;
-	
 	@Column(name="nombre",nullable = false)
 	private String nombre;
 	
@@ -33,8 +27,6 @@ public class Cliente {
 	@Column(name="dni",unique = true,nullable = false)
 	private long dni;
 	
-	@Column(name="email", unique= true, nullable =false)
-	private String email;
 	
 	
 }
