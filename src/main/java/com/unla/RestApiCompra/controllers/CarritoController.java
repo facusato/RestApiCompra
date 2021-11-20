@@ -64,8 +64,6 @@ public class CarritoController {
 			Cliente clienteAct = clienteService.obtenerCliente(carrito.getCliente().getIdCliente());
 			clienteAct.setApellido(carrito.getCliente().getApellido());
 			clienteAct.setNombre(carrito.getCliente().getNombre());
-			clienteAct.setUsuario(carrito.getCliente().getUsuario());
-			clienteAct.setPassword(carrito.getCliente().getPassword());
 			carritoAct.setCliente(clienteAct);
 			return ResponseEntity.ok(carritoService.modificarCarrito(carritoAct));
 		}

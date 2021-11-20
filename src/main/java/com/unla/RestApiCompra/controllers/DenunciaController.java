@@ -77,8 +77,6 @@ public class DenunciaController {
 		Cliente clienteAct = clienteService.obtenerCliente(denuncia.getCliente().getIdCliente());
 		clienteAct.setApellido(denuncia.getCliente().getApellido());
 		clienteAct.setNombre(denuncia.getCliente().getNombre());
-		clienteAct.setUsuario(denuncia.getCliente().getUsuario());
-		clienteAct.setPassword(denuncia.getCliente().getPassword());
 		denunciaAct.setCliente(clienteAct);
 		return ResponseEntity.ok(denunciaService.modificarDenuncia(denunciaAct));
 	}

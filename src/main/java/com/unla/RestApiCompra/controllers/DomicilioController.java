@@ -68,8 +68,6 @@ public class DomicilioController {
 		Cliente clienteAct = clienteService.obtenerCliente(domicilio.getCliente().getIdCliente());
 		clienteAct.setApellido(domicilio.getCliente().getApellido());
 		clienteAct.setNombre(domicilio.getCliente().getNombre());
-		clienteAct.setUsuario(domicilio.getCliente().getUsuario());
-		clienteAct.setPassword(domicilio.getCliente().getPassword());
 		domicilioAct.setCliente(clienteAct);
 		return ResponseEntity.ok(domicilioService.modificarDomicilio(domicilioAct));
 	}

@@ -1,21 +1,27 @@
 package com.unla.RestApiCompra.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+
 
 @Entity
 @Table(name="pedido")
-@Data @NoArgsConstructor @AllArgsConstructor @Builder
+@Data
 public class Pedido {
 	
 	
@@ -26,13 +32,19 @@ public class Pedido {
 	@Column(name="codigoSeguim")
 	private int codigoSeguim;
 	
-	@Column(name="dni")
-	private int dni;
-	
 	@OneToOne
 	private Domicilio domicilio;
 	
 	@Column(name="estado")
 	private String estado;
+	
+    @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "pedido_id")
+    private List<Items> items;
+    
+    public Pedido(){
+        items = new ArrayList<>();
+    }
 	
 }

@@ -62,9 +62,9 @@ public class PedidoController {
 		Pedido pedidoAct = pedidoService.obtenerPedido(idPedido);
 		pedidoAct.setCodigoSeguim(pedido.getCodigoSeguim());
 		pedidoAct.setDomicilio(pedido.getDomicilio());
-		pedidoAct.setDni(pedido.getDni());
 		pedidoAct.setEstado(pedido.getEstado());
-		//setear productos
+		pedidoAct.getItems().clear();
+		pedidoAct.setItems(pedido.getItems());
 		return ResponseEntity.ok(pedidoService.modificarPedido(pedidoAct));
 	}
 	
