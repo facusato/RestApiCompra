@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,6 +24,7 @@ import com.unla.RestApiCompra.services.implementacion.DenunciaService;
 
 @RestController
 @RequestMapping("/denuncia")
+@CrossOrigin
 public class DenunciaController {
 	
 	@Autowired
@@ -74,10 +76,6 @@ public class DenunciaController {
 		Denuncia denunciaAct = denunciaService.obtenerDenuncia(idDenuncia);
 		denunciaAct.setCategoria(denuncia.getCategoria());
 		denunciaAct.setDescripcion(denuncia.getDescripcion());
-		Cliente clienteAct = clienteService.obtenerCliente(denuncia.getCliente().getIdCliente());
-		clienteAct.setApellido(denuncia.getCliente().getApellido());
-		clienteAct.setNombre(denuncia.getCliente().getNombre());
-		denunciaAct.setCliente(clienteAct);
 		return ResponseEntity.ok(denunciaService.modificarDenuncia(denunciaAct));
 	}
 	

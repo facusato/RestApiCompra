@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<bindings xmlns="http://java.sun.com/xml/ns/jaxb" if-exists="true" version="2.1">
+      
+    <!--
+
+Este archivo ha sido generado por la arquitectura JavaTM para la implantación de la referencia de enlace (JAXB) XML v2.3.0 
+Visite <a href="https://javaee.github.io/jaxb-v2/">https://javaee.github.io/jaxb-v2/</a> 
+Todas las modificaciones realizadas en este archivo se perderán si se vuelve a compilar el esquema de origen. 
+Generado el: 2021.11.23 a las 05:07:35 PM ART 
+
+  -->
+      
+    <bindings xmlns:tns="django.soap.example" if-exists="true" scd="x-schema::tns">
+            
+        <schemaBindings map="false">
+                  
+            <package name="com.unla.RestApiCompra.stub"/>
+                
+        </schemaBindings>
+            
+        <bindings if-exists="true" scd="~tns:list">
+                  
+            <class ref="com.unla.RestApiCompra.stub.List"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:confirmar_identidad">
+                  
+            <class ref="com.unla.RestApiCompra.stub.ConfirmarIdentidad"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:confirmar_identidadResponse">
+                  
+            <class ref="com.unla.RestApiCompra.stub.ConfirmarIdentidadResponse"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:consultar_saldo">
+                  
+            <class ref="com.unla.RestApiCompra.stub.ConsultarSaldo"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:consultar_saldoResponse">
+                  
+            <class ref="com.unla.RestApiCompra.stub.ConsultarSaldoResponse"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:sum">
+                  
+            <class ref="com.unla.RestApiCompra.stub.Sum"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:sumResponse">
+                  
+            <class ref="com.unla.RestApiCompra.stub.SumResponse"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:transferir_saldo">
+                  
+            <class ref="com.unla.RestApiCompra.stub.TransferirSaldo"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:transferir_saldoResponse">
+                  
+            <class ref="com.unla.RestApiCompra.stub.TransferirSaldoResponse"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:listResponse">
+                  
+            <class ref="com.unla.RestApiCompra.stub.ListResponse"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:consultarEstadoPorCodSeguim">
+                  
+            <class ref="com.unla.RestApiCompra.stub.ConsultarEstadoPorCodSeguim"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:consultarEstadoPorCodSeguimResponse">
+                  
+            <class ref="com.unla.RestApiCompra.stub.ConsultarEstadoPorCodSeguimResponse"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:generarCodSeguimiento">
+                  
+            <class ref="com.unla.RestApiCompra.stub.GenerarCodSeguimiento"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:generarCodSeguimientoResponse">
+                  
+            <class ref="com.unla.RestApiCompra.stub.GenerarCodSeguimientoResponse"/>
+                
+        </bindings>
+          
+    </bindings>
+      
+    <bindings xmlns:tns="template_app.soap" if-exists="true" scd="x-schema::tns">
+            
+        <schemaBindings map="false">
+                  
+            <package name="com.unla.RestApiCompra.stub"/>
+                
+        </schemaBindings>
+            
+        <bindings if-exists="true" scd="~tns:Cuentas">
+                  
+            <class ref="com.unla.RestApiCompra.stub.Cuentas"/>
+                
+        </bindings>
+            
+        <bindings if-exists="true" scd="~tns:CuentasArray">
+                  
+            <class ref="com.unla.RestApiCompra.stub.CuentasArray"/>
+                
+        </bindings>
+          
+    </bindings>
+    
+</bindings>

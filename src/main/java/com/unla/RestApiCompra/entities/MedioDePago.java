@@ -19,7 +19,6 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name="medioDePago")
-@Data @NoArgsConstructor @AllArgsConstructor @Builder
 public class MedioDePago {
 	
 	@Id
@@ -37,6 +36,60 @@ public class MedioDePago {
 	@JoinColumn(name="cliente_id", nullable=false)
 	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 	private Cliente cliente;
+
+
+	public MedioDePago(long idMedioDePago, String nombreMedio, double monto, Cliente cliente) {
+		super();
+		this.idMedioDePago = idMedioDePago;
+		this.nombreMedio = nombreMedio;
+		this.monto = monto;
+		this.cliente = cliente;
+	}
+
+
+	public long getIdMedioDePago() {
+		return idMedioDePago;
+	}
+
+
+	public void setIdMedioDePago(long idMedioDePago) {
+		this.idMedioDePago = idMedioDePago;
+	}
+
+
+	public String getNombreMedio() {
+		return nombreMedio;
+	}
+
+
+	public void setNombreMedio(String nombreMedio) {
+		this.nombreMedio = nombreMedio;
+	}
+
+
+	public double getMonto() {
+		return monto;
+	}
+
+
+	public void setMonto(double monto) {
+		this.monto = monto;
+	}
+
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+
+	public MedioDePago() {
+		super();
+	}
 	
 	
 	

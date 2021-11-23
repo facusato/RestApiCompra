@@ -18,7 +18,6 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name="denuncia")
-@Data @NoArgsConstructor @AllArgsConstructor @Builder
 public class Denuncia {
 	
 	@Id
@@ -32,11 +31,53 @@ public class Denuncia {
 	
 	private String estado;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="cliente_id", nullable=false)
-	@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
-	private Cliente cliente;
-	
+
+
+	public Denuncia(long idDenuncia, String categoria, String descripcion, String estado) {
+		super();
+		this.idDenuncia = idDenuncia;
+		this.categoria = categoria;
+		this.descripcion = descripcion;
+		this.estado = estado;
+	}
+
+	public Denuncia() {
+		super();
+	}
+
+	public long getIdDenuncia() {
+		return idDenuncia;
+	}
+
+	public void setIdDenuncia(long idDenuncia) {
+		this.idDenuncia = idDenuncia;
+	}
+
+	public String getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+
 	
 	
 

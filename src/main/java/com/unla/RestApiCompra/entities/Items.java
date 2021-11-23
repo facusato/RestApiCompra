@@ -7,7 +7,6 @@ import javax.persistence.*;
 import com.unla.RestApiCompra.models.Producto;
 
 @Entity
-@Data
 @Table(name = "items")
 
 public class Items  {
@@ -41,4 +40,48 @@ public class Items  {
         this.precio=(double) 0;
 
     }
+	public Items(Long id, int cantidad, Double precio, Long productoId, Double subTotal, Producto producto) {
+		super();
+		this.id = id;
+		this.cantidad = cantidad;
+		this.precio = precio;
+		this.productoId = productoId;
+		this.subTotal = subTotal;
+		this.producto = producto;
+	}
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public int getCantidad() {
+		return cantidad;
+	}
+	public void setCantidad(int cantidad) {
+		this.cantidad = cantidad;
+	}
+	public Double getPrecio() {
+		return precio;
+	}
+	public void setPrecio(Double precio) {
+		this.precio = precio;
+	}
+	public Long getProductoId() {
+		return productoId;
+	}
+	public void setProductoId(Long productoId) {
+		this.productoId = productoId;
+	}
+	public Producto getProducto() {
+		return producto;
+	}
+	public void setProducto(Producto producto) {
+		this.producto = producto;
+	}
+	public void setSubTotal(Double subTotal) {
+		this.subTotal = subTotal;
+	}
+    
+    
 }
