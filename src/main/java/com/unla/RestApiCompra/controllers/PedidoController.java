@@ -61,10 +61,7 @@ public class PedidoController {
 	public ResponseEntity<Pedido> actualizarPedido(@PathVariable("idPedido") long idPedido, @RequestBody Pedido pedido){
 		Pedido pedidoAct = pedidoService.obtenerPedido(idPedido);
 		pedidoAct.setCodigoSeguim(pedido.getCodigoSeguim());
-		pedidoAct.setDomicilio(pedido.getDomicilio());
 		pedidoAct.setEstado(pedido.getEstado());
-		pedidoAct.getItems().clear();
-		pedidoAct.setItems(pedido.getItems());
 		return ResponseEntity.ok(pedidoService.modificarPedido(pedidoAct));
 	}
 	

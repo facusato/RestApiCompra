@@ -1,17 +1,13 @@
 package com.unla.RestApiCompra.entities;
 
-
-
 import javax.persistence.*;
-
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name="cliente")
-@Data @NoArgsConstructor @AllArgsConstructor @Builder
+@Data @NoArgsConstructor @AllArgsConstructor 
 public class Cliente {
 	
 	@Id
@@ -27,6 +23,6 @@ public class Cliente {
 	@Column(name="dni",unique = true,nullable = false)
 	private long dni;
 	
-	
-	
+	@Column(name="domicilio",nullable = false)
+	private String domicilio;
 }

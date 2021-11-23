@@ -18,14 +18,11 @@ public class Items  {
     
     private int cantidad;
     
-    
-    
     private Double  precio;
 
     @Column(name = "producto_id")
     private Long productoId;
-
-
+    
     @Transient
     private Double subTotal;
 
@@ -33,8 +30,8 @@ public class Items  {
     private Producto producto;
 
     public Double getSubTotal(){
-        if (this.producto.getPrecio() >0  && this.cantidad >0 ){
-            return this.cantidad * this.producto.getPrecio();
+        if (this.getPrecio() >0  && this.cantidad >0 ){
+            return this.cantidad * this.getPrecio();
         }else {
             return (double) 0;
         }
