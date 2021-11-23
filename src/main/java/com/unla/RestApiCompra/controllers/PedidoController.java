@@ -22,8 +22,8 @@ import com.unla.RestApiCompra.services.implementacion.ClienteService;
 import com.unla.RestApiCompra.services.implementacion.PedidoService;
 
 @RestController
-@CrossOrigin("*")
 @RequestMapping("/pedido")
+@CrossOrigin
 public class PedidoController {
 	
 	@Autowired

@@ -17,7 +17,5 @@ public interface IDenunciaRepository extends JpaRepository<Denuncia, Serializabl
 	
 	@Query("SELECT d FROM  Denuncia d WHERE d.estado = (:estado)")
 	public abstract List<Denuncia> findByEstado(String estado);
-	
-	/*@Query("SELECT d FROM Denuncia d JOIN FETCH d.cliente c WHERE c.idCliente = (:idCliente)")
-	public abstract List<Denuncia> findByIdCliente(long idCliente);*/
+
 }

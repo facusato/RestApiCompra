@@ -16,13 +16,15 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.unla.RestApiCompra.entities.Cliente;
 import com.unla.RestApiCompra.entities.Reclamo;
 import com.unla.RestApiCompra.services.implementacion.ClienteService;
 import com.unla.RestApiCompra.services.implementacion.ReclamoService;
 
 @RestController
-@CrossOrigin("*")
 @RequestMapping("/reclamo")
+@CrossOrigin
 public class ReclamoController {
 	
 	@Autowired
@@ -73,8 +75,7 @@ public class ReclamoController {
 	public ResponseEntity<Reclamo> actualizarReclamo(@PathVariable("idReclamo") long idReclamo, @RequestBody Reclamo reclamo){
 		Reclamo reclamoAct = reclamoService.obtenerReclamo(idReclamo);
 		reclamoAct.setEstado(reclamo.getEstado());
-		reclamoAct.setDescripcion(reclamo.getDescripcion());
-		reclamoAct.setIdPedido(reclamo.getIdPedido());
+
 		return ResponseEntity.ok(reclamoService.modificarReclamo(reclamoAct));
 	}
 	

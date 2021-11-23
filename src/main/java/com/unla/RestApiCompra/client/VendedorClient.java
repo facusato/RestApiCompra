@@ -3,9 +3,7 @@ package com.unla.RestApiCompra.client;
 import java.util.ArrayList;
 
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -17,8 +15,5 @@ public interface VendedorClient {
 	
 	 @GetMapping("/productonombre")
 	    public ArrayList<Vendedor> obtenerVendedorPorNombreDeProducto(@RequestParam("nombre") String nombre);
-	 
-	 @GetMapping("/{idVendedor}")
-		public ResponseEntity<Vendedor> obtenerVendedorPorId(@PathVariable("idVendedor") long idVendedor);
 
 }

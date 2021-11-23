@@ -17,13 +17,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.unla.RestApiCompra.entities.Cliente;
 import com.unla.RestApiCompra.entities.Denuncia;
 import com.unla.RestApiCompra.services.implementacion.ClienteService;
 import com.unla.RestApiCompra.services.implementacion.DenunciaService;
 
 @RestController
-@CrossOrigin("*")
 @RequestMapping("/denuncia")
+@CrossOrigin
 public class DenunciaController {
 	
 	@Autowired
@@ -75,7 +76,6 @@ public class DenunciaController {
 		Denuncia denunciaAct = denunciaService.obtenerDenuncia(idDenuncia);
 		denunciaAct.setCategoria(denuncia.getCategoria());
 		denunciaAct.setDescripcion(denuncia.getDescripcion());
-		denunciaAct.setIdPedido(denuncia.getIdPedido());
 		return ResponseEntity.ok(denunciaService.modificarDenuncia(denunciaAct));
 	}
 	

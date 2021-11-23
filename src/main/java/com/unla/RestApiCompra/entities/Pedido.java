@@ -15,14 +15,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import lombok.Data;
 
 
-@Data
 @Entity
 @Table(name="pedido")
 public class Pedido {
@@ -48,27 +44,75 @@ public class Pedido {
 	 @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	 @JoinColumn(name = "pedido_id")
 	 private List<Items> items;
-	 
-	 
-	 @Transient
-	 private double total;
 	    
 	
 	public Pedido() {
 		
 		items = new ArrayList<>();
 	}
-	
-	
-	public double getTotal(){
-		int i=0;
-		while(i<items.size()) {
-			
-			total+=items.get(i).getCantidad()*items.get(i).getPrecio();
-			i++;
-		}
-        return total;
-    }
+
+
+	public Pedido(long idPedido, int codigoSeguim, String estado, Cliente cliente, List<Items> items) {
+		super();
+		this.idPedido = idPedido;
+		this.codigoSeguim = codigoSeguim;
+		this.estado = estado;
+		this.cliente = cliente;
+		this.items = items;
+	}
+
+
+
+
+	public long getIdPedido() {
+		return idPedido;
+	}
+
+
+	public void setIdPedido(long idPedido) {
+		this.idPedido = idPedido;
+	}
+
+
+	public int getCodigoSeguim() {
+		return codigoSeguim;
+	}
+
+
+	public void setCodigoSeguim(int codigoSeguim) {
+		this.codigoSeguim = codigoSeguim;
+	}
+
+
+	public String getEstado() {
+		return estado;
+	}
+
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+
+	public List<Items> getItems() {
+		return items;
+	}
+
+
+	public void setItems(List<Items> items) {
+		this.items = items;
+	}
+
 
 	
 
