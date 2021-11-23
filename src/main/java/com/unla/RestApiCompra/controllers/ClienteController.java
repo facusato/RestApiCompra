@@ -21,7 +21,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import  com.unla.RestApiCompra.models.*;
 import com.unla.RestApiCompra.entities.Cliente;
+
 import com.unla.RestApiCompra.services.implementacion.ClienteService;
+import com.unla.RestApiCompra.services.implementacion.PedidoService;
 
 @RestController
 @CrossOrigin("*")
@@ -31,6 +33,10 @@ public class ClienteController {
 	@Autowired
 	@Qualifier("clienteService")
 	ClienteService clienteService;
+	
+	@Autowired
+	@Qualifier("pedidoService")
+	PedidoService pedidoService;
 	
 	@GetMapping()
 	public ResponseEntity<List<Cliente>> obtenerClientes(){
@@ -78,6 +84,7 @@ public class ClienteController {
 		ArrayList<Vendedor> v=clienteService.obtenerVendedorPorNombreDeProducto(nombre);
 		return v;
 	}
+	
 	
 
 }

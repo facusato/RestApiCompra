@@ -1,5 +1,6 @@
 package com.unla.RestApiCompra.entities;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,37 +15,45 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.Data;
 
 
+@Data
 @Entity
 @Table(name="pedido")
-@Data
 public class Pedido {
-	
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long idPedido;
 	
+	//atributo que viene de correo
 	@Column(name="codigoSeguim")
 	private int codigoSeguim;
 	
-	@OneToOne
-	private Domicilio domicilio;
-	
+	//atributo que viene  del correo
 	@Column(name="estado")
 	private String estado;
 	
-    @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "pedido_id")
-    private List<Items> items;
-    
-    public Pedido(){
-        items = new ArrayList<>();
-    }
+	@OneToOne
+	private Cliente cliente;
 	
+	
+	
+	 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+	 @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	 @JoinColumn(name = "pedido_id")
+	 private List<Items> items;
+	    
+	
+	public Pedido() {
+		
+		items = new ArrayList<>();
+	}
+
+
+	
+
 }
