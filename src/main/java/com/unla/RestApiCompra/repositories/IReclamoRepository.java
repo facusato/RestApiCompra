@@ -16,7 +16,7 @@ public interface IReclamoRepository extends JpaRepository<Reclamo, Serializable>
 	@Query("SELECT r FROM  Reclamo r WHERE r.estado = (:estado)")
 	public abstract List<Reclamo> findByEstado(String estado);
 	
-	@Query("SELECT r FROM Reclamo r JOIN FETCH r.cliente c WHERE c.idCliente = (:idCliente)")
-	public abstract List<Reclamo> findByIdCliente(long idCliente);
+	/*@Query("SELECT r FROM Reclamo r JOIN FETCH r.cliente c WHERE c.idCliente = (:idCliente)")
+	public abstract List<Reclamo> findByIdCliente(long idCliente);*/
 }
 

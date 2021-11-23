@@ -69,7 +69,7 @@ public class ClienteController {
 		clienteAct.setApellido(cliente.getApellido());
 		clienteAct.setNombre(cliente.getNombre());
 		clienteAct.setDni(cliente.getDni());
-	
+		clienteAct.setDomicilio(cliente.getDomicilio());
 		return ResponseEntity.ok(clienteService.modificarCliente(clienteAct));
 	}
 	

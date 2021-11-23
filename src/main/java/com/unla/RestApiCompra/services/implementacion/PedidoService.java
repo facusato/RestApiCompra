@@ -7,10 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import com.unla.RestApiCompra.client.ProductoClient;
+import com.unla.RestApiCompra.client.VendedorClient;
 import com.unla.RestApiCompra.entities.Cliente;
 import com.unla.RestApiCompra.entities.Items;
 import com.unla.RestApiCompra.entities.Pedido;
 import com.unla.RestApiCompra.models.Producto;
+
 import com.unla.RestApiCompra.repositories.IClienteRepository;
 import com.unla.RestApiCompra.repositories.IPedidoRepository;
 import com.unla.RestApiCompra.services.IPedidoService;
@@ -31,6 +33,9 @@ public class PedidoService implements IPedidoService{
 	
 	@Autowired
 	ProductoClient productoClient;
+	
+	@Autowired
+	VendedorClient vendedorClient;
 	
 	@Override
 	public List<Pedido> getAll() {
@@ -81,7 +86,7 @@ public class PedidoService implements IPedidoService{
 		pedido.setCliente(cliente);
 		Pedido pedidoDB = pedidoRepository.findByIdPedido(pedido.getIdPedido());
 		pedidoDB.getItems().forEach( items -> {
-            productoClient.updateStockProduct( items.getProductoId(), items.getCantidad() * -1);
+            productoClient.updateStockProduct( items.getProductoId(), items.getCantidad() * -1); 
         });
 		return pedidoDB;
 	}

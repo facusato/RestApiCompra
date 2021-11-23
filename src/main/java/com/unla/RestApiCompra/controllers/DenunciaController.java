@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,12 +17,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.unla.RestApiCompra.entities.Cliente;
 import com.unla.RestApiCompra.entities.Denuncia;
 import com.unla.RestApiCompra.services.implementacion.ClienteService;
 import com.unla.RestApiCompra.services.implementacion.DenunciaService;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/denuncia")
 public class DenunciaController {
 	
@@ -74,10 +75,7 @@ public class DenunciaController {
 		Denuncia denunciaAct = denunciaService.obtenerDenuncia(idDenuncia);
 		denunciaAct.setCategoria(denuncia.getCategoria());
 		denunciaAct.setDescripcion(denuncia.getDescripcion());
-		Cliente clienteAct = clienteService.obtenerCliente(denuncia.getCliente().getIdCliente());
-		clienteAct.setApellido(denuncia.getCliente().getApellido());
-		clienteAct.setNombre(denuncia.getCliente().getNombre());
-		denunciaAct.setCliente(clienteAct);
+		denunciaAct.setIdPedido(denuncia.getIdPedido());
 		return ResponseEntity.ok(denunciaService.modificarDenuncia(denunciaAct));
 	}
 	

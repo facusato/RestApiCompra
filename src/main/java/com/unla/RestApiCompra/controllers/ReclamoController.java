@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,13 +16,12 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.unla.RestApiCompra.entities.Cliente;
 import com.unla.RestApiCompra.entities.Reclamo;
 import com.unla.RestApiCompra.services.implementacion.ClienteService;
 import com.unla.RestApiCompra.services.implementacion.ReclamoService;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/reclamo")
 public class ReclamoController {
 	
@@ -73,11 +73,8 @@ public class ReclamoController {
 	public ResponseEntity<Reclamo> actualizarReclamo(@PathVariable("idReclamo") long idReclamo, @RequestBody Reclamo reclamo){
 		Reclamo reclamoAct = reclamoService.obtenerReclamo(idReclamo);
 		reclamoAct.setEstado(reclamo.getEstado());
-		reclamoAct.setDescripcion(reclamo.getDescripcion());		
-		Cliente clienteAct = clienteService.obtenerCliente(reclamo.getCliente().getIdCliente());
-		clienteAct.setApellido(reclamo.getCliente().getApellido());
-		clienteAct.setNombre(reclamo.getCliente().getNombre());
-		reclamoAct.setCliente(clienteAct);
+		reclamoAct.setDescripcion(reclamo.getDescripcion());
+		reclamoAct.setIdPedido(reclamo.getIdPedido());
 		return ResponseEntity.ok(reclamoService.modificarReclamo(reclamoAct));
 	}
 	
